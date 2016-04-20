@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,10 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-
+	
 	@RequestMapping("/getAllStudentInfo")
 	public String getAllStudentInfo( Model model) {
+	
 		List<Student> studentList = studentService.getAllStudentInfo();
 
 		if (studentList != null && studentList.size() > 0) {

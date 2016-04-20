@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4j:configuration debug="true">
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="STDOUTLOG" />
+		<appender-ref ref="console" />
+	</root>
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p] %d{yyyy-MM-dd HH:mm:ss} %l: %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="STDOUTLOG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/logs/stdout.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Collector Client log -->
+
+	<appender name="CollectorClient" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/logs/CollectorClient.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %5p [%t] (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 设置控制台打印sql信息 -->
+	<!-- ibatis -->
+	<logger name="com.ibatis" additivity="true">
+		<level value="debug" />
+	</logger>
+
+	<!-- ibatis连接 -->
+	<logger name="java.sql.Connection" additivity="true">
+		<level value="debug" />
+	</logger>
+
+	<!-- ibatis编译 -->
+	<logger name="java.sql.Statement" additivity="true">
+		<level value="debug" />
+	</logger>
+
+	<!-- ibatis显示预编译sql日志 -->
+	<logger name="java.sql.PreparedStatement" additivity="true">
+		<level value="debug" />
+		<appender-ref ref="STDOUTLOG" />
+		<appender-ref ref="console" />
+	</logger>
+	<!-- ibatis显示结果集日志 -->
+	<logger name="java.sql.ResultSet" additivity="true">
+		<level value="debug" />
+		<appender-ref ref="STDOUTLOG" />
+		<appender-ref ref="console" />
+	</logger>
+
+</log4j:configuration>
