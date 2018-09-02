@@ -33,7 +33,7 @@
 		<property name="minIdle" value="1" />
 		
 		<!-- 开启 druid监控日志-->
-		<property name="timeBetweenLogStatsMillis" value="30000" />
+		<!-- <property name="timeBetweenLogStatsMillis" value="30000" /> -->
 		
 		<property name="timeBetweenEvictionRunsMillis" value="3000" />
 		<property name="minEvictableIdleTimeMillis" value="300000" />
